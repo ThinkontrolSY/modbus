@@ -18,12 +18,12 @@ const (
 )
 
 func TestTCPClient(t *testing.T) {
-	client := modbus.TCPClient(tcpDevice)
+	client := modbus.TCPClient("tcp", tcpDevice)
 	ClientTestAll(t, client)
 }
 
 func TestTCPClientAdvancedUsage(t *testing.T) {
-	handler := modbus.NewTCPClientHandler(tcpDevice)
+	handler := modbus.NewTCPClientHandler("tcp", tcpDevice)
 	handler.Timeout = 5 * time.Second
 	handler.SlaveId = 1
 	handler.Logger = log.New(os.Stdout, "tcp: ", log.LstdFlags)
